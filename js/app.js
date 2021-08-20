@@ -52,3 +52,17 @@ document.getElementById('deliveryFree').addEventListener('click', function(){
 document.getElementById('deliveryPremium').addEventListener('click', function(){
     updateCost('delivery', 20);
 });
+
+//Apply promo code
+document.getElementById('promo-code-btn').addEventListener('click', function(){
+    const promoCode = document.getElementById('promo-code');
+    if(promoCode.value == 'stevekaku'){
+        const subTotalElement = document.getElementById('subTotal');
+        const grandTotalElement = document.getElementById('grandTotal');
+
+        const subTotal = convertToFloat(subTotalElement.innerText);
+        const grandTotal = subTotal - (subTotal*20/100);
+        grandTotalElement.innerText = grandTotal;
+        promoCode.value = "";
+    }
+});
